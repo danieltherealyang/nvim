@@ -1,0 +1,13 @@
+vim.g.mapleader = " "
+vim.keymap.set("n", "<leader>b", vim.cmd.NvimTreeToggle)
+vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { silent = true })
+vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { silent = true })
+vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { silent = true })
+vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { silent = true })
+vim.keymap.set('n', '<C-x>', ':q<CR>')
+vim.keymap.set('n', '<C-s>', ':w<CR>')
+vim.keymap.set('n', '<C-\\>', ':vsp<CR>')
+vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', {noremap = true})
+vim.keymap.set('t', '<C-q>', '<C-\\><C-n>:ToggleTerm<CR>', { silent = true })
+vim.keymap.set('n', '<C-Space>h', ':ToggleTerm direction=horizontal<CR>i', { silent = true })
+vim.keymap.set('n', '<C-Space>f', ':ToggleTerm direction=float<CR>i', { silent = true })
