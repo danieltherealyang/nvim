@@ -10,21 +10,6 @@ return require('packer').startup(function(use)
   }
   use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use ('nvim-treesitter/playground')
-  use {
-      'VonHeikemen/lsp-zero.nvim',
-      branch = 'v3.x',
-      requires = {
-          --- Uncomment the two plugins below if you want to manage the language servers from neovim
-          {'neovim/nvim-lspconfig'},
-          {'williamboman/mason.nvim'},
-          {'williamboman/mason-lspconfig.nvim'},
-
-          {'neovim/nvim-lspconfig'},
-          {'hrsh7th/nvim-cmp'},
-          {'hrsh7th/cmp-nvim-lsp'},
-          {'L3MON4D3/LuaSnip'},
-      }
-  }
   use({
       "neanias/everforest-nvim",
       -- Optional; default configuration will be used if setup isn't called.
@@ -47,5 +32,5 @@ return require('packer').startup(function(use)
           require('Comment').setup()
       end
   }
-  use('cohama/lexima.vim')
+  use {'neoclide/coc.nvim', branch = 'release'}
 end)
