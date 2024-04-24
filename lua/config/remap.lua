@@ -18,3 +18,4 @@ vim.keymap.set('n', '<C-Space>f', ':ToggleTerm direction=float<CR>i', { silent =
 vim.keymap.set('n', '<C-Up>', '<C-Y>', { noremap = true })
 vim.keymap.set('n', '<C-Down>', '<C-E>', { noremap = true })
 vim.keymap.set('i', '<CR>', [[coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], { expr = true, silent = true })
+vim.keymap.set('n', '<Tab>', ':set wrap! wrap?<CR>', { noremap = true, silent = true })
