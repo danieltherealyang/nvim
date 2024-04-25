@@ -7,3 +7,10 @@ vim.o.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 2 -- Number of spaces inserted when indenting
 vim.wo.number = true
 vim.opt.fillchars = {eob = " "}
+vim.opt.virtualedit:append("onemore")
+vim.cmd([[
+  augroup MoveCursorOnInsertLeave
+    autocmd!
+    autocmd InsertLeave * :normal! `^
+  augroup END
+]])
