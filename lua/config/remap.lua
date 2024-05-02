@@ -7,7 +7,7 @@ vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { silent = true, desc = "Move righ
 vim.keymap.set('n', '<C-x>', ':q<CR>', { desc = "Close window" })
 vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = "Save file" })
 vim.keymap.set('i', '<C-x>', '<ESC>:q<CR>', { desc = "Close window" })
-vim.keymap.set('i', '<C-s>', '<ESC>:w<CR>i<Right>', { desc = "Save file" })
+vim.keymap.set('i', '<C-s>', '<ESC>:w<CR>i', { desc = "Save file" })
 vim.keymap.set('n', '<C-\\>', ':vsp<CR>', { desc = "Split screen" })
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true, desc = "Exit terminal mode" })
 vim.keymap.set('t', '<C-q>', '<C-\\><C-n>:ToggleTerm<CR>', { silent = true, desc = "Toggle terminal" })
