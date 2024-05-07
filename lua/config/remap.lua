@@ -10,14 +10,24 @@ vim.keymap.set('i', '<C-x>', '<ESC>:q<CR>', { desc = "Close window" })
 vim.keymap.set('i', '<C-s>', '<ESC>:w<CR>i', { desc = "Save file" })
 vim.keymap.set('n', '<C-\\>', ':vsp<CR>', { desc = "Split screen" })
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { noremap = true, desc = "Exit terminal mode" })
-vim.keymap.set('t', '<C-q>', '<C-\\><C-n>:ToggleTerm<CR>', { silent = true, desc = "Toggle terminal" })
-vim.keymap.set('n', '<C-q>', ':ToggleTerm<CR>i', { silent = true, desc = "Toggle terminal" })
-vim.keymap.set('i', '<C-q>', '<C-\\><C-n>:ToggleTerm<CR>i', { silent = true, desc = "Toggle terminal" })
-vim.keymap.set('n', '<C-Space>h', ':ToggleTerm direction=horizontal<CR>', { silent = true, desc = "Toggle horizontal terminal" })
-vim.keymap.set('n', '<C-Space>f', ':ToggleTerm direction=float<CR>', { silent = true, desc = "Toggle floating terminal" })
 vim.keymap.set('n', '<C-Up>', '<C-Y>', { noremap = true, desc = "Scroll up" })
 vim.keymap.set('n', '<C-Down>', '<C-E>', { noremap = true, desc = "Scroll down" })
 vim.keymap.set('i', '<CR>', [[coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], { expr = true, silent = true, desc = "Select suggestion" })
 vim.keymap.set('n', '<Tab>', ':set wrap! wrap?<CR>', { noremap = true, silent = true, desc = "Toggle text wrap" })
-vim.keymap.set('i', '<C-H>', '<ESC>dbi', { desc = "Delete word backwards" })
+
+function _G.check_and_delete_word_backwards()
+  local col = vim.fn.col('.') - 1
+  local line = vim.fn.getline('.')
+  local leading_whitespace = string.match(line, '^%s*')
+  local leading_whitespace_length = leading_whitespace and #leading_whitespace or 0
+
+  if col > leading_whitespace_length then
+    return '<ESC>dbi'
+  elseif leading_whitespace_length > 0 then
+    return '<ESC>' .. leading_whitespace_length .. 'dhi'
+  else
+    return ''
+  end
+end
+vim.keymap.set('i', '<C-H>', _G.check_and_delete_word_backwards, { expr = true, desc = "Delete word backwards" })
 vim.keymap.set('i', '<C-Del>', '<ESC>dwi', { desc = "Delete word forwards" })
