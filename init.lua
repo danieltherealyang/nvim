@@ -12,9 +12,6 @@ vim.opt.fillchars = {eob = " "}
 vim.opt.virtualedit:append("onemore")
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.cmd([[
-  augroup MoveCursorOnInsertLeave
-    autocmd!
-    autocmd InsertLeave * :normal! `^
-  augroup END
-]])
+vim.cmd[[
+  autocmd InsertLeave * :normal! `^
+]]
