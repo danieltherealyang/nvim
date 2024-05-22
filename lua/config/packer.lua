@@ -41,4 +41,5 @@ return require('packer').startup(function(use)
       require("which-key").setup{}
     end
   }
+  use 'j-morano/buffer_manager.nvim'
 end)

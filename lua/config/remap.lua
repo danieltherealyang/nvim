@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>b", vim.cmd.NvimTreeToggle, { desc = "Toggle file explorer" })
+vim.keymap.set("n", "<Leader>b", vim.cmd.NvimTreeToggle, { desc = "Toggle file explorer" })
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { silent = true, desc = "Move up window" })
 vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { silent = true, desc = "Move down window" })
 vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { silent = true, desc = "Move left window" })
@@ -29,5 +29,10 @@ function _G.check_and_delete_word_backwards()
     return ''
   end
 end
+
 vim.keymap.set('i', '<C-H>', _G.check_and_delete_word_backwards, { expr = true, desc = "Delete word backwards" })
 vim.keymap.set('i', '<C-Del>', '<ESC>dwi', { desc = "Delete word forwards" })
+
+vim.keymap.set('n', '<Leader><Tab>', ':lua require("buffer_manager.ui").toggle_quick_menu()<CR>', { noremap = true, desc = "Toggle buffer menu" })
+vim.keymap.set('n', '<Leader>h', ':lua require("buffer_manager.ui").nav_prev()<CR>', { noremap = true, desc = "Open previous buffer" })
+vim.keymap.set('n', '<Leader>l', ':lua require("buffer_manager.ui").nav_next()<CR>', { noremap = true, desc = "Open next buffer" })

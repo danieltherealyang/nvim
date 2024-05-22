@@ -15,3 +15,7 @@ vim.opt.smartcase = true
 vim.cmd[[
   autocmd InsertLeave * :normal! `^
 ]]
+vim.cmd([[
+  autocmd FileType buffer_manager noremap J :m '.+1<CR>==
+  autocmd FileType buffer_manager noremap K :m '.-1<CR>==
+]])
