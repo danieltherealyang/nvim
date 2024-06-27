@@ -30,9 +30,21 @@ function _G.check_and_delete_word_backwards()
   end
 end
 
-vim.keymap.set('i', '<C-H>', _G.check_and_delete_word_backwards, { expr = true, desc = "Delete word backwards" })
+vim.keymap.set('i', '<C-BS>', _G.check_and_delete_word_backwards, { expr = true, desc = "Delete word backwards" })
 vim.keymap.set('i', '<C-Del>', '<ESC>dwi', { desc = "Delete word forwards" })
 
 vim.keymap.set('n', '<Leader><Tab>', ':lua require("buffer_manager.ui").toggle_quick_menu()<CR>', { noremap = true, desc = "Toggle buffer menu" })
 vim.keymap.set('n', '<Leader>h', ':lua require("buffer_manager.ui").nav_prev()<CR>', { noremap = true, desc = "Open previous buffer" })
 vim.keymap.set('n', '<Leader>l', ':lua require("buffer_manager.ui").nav_next()<CR>', { noremap = true, desc = "Open next buffer" })
+
+function _G.toggle_macro_env()
+  if vim.g.coc_enabled == 1 then
+    vim.cmd('CocDisable')
+    vim.cmd('call CocAction("deactivateExtension", "coc-pairs")')
+  else
+    vim.cmd('CocEnable')
+    vim.cmd("call CocAction('toggleExtension', 'coc-pairs')")
+  end
+end
+
+vim.keymap.set('n', '<Leader>m', _G.toggle_macro_env, { noremap = true, desc = "Toggle macro env" })
