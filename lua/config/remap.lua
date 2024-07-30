@@ -48,3 +48,29 @@ function _G.toggle_macro_env()
 end
 
 vim.keymap.set('n', '<Leader>m', _G.toggle_macro_env, { noremap = true, desc = "Toggle macro env" })
+
+vim.keymap.set('n', '<Leader>r', function()
+  vim.opt.relativenumber = not(vim.opt.relativenumber:get())
+  if vim.opt.relativenumber:get() then
+    print("relative")
+  else
+    print("absolute")
+  end
+end, { noremap = true, desc = "Toggle relative line numbers" })
+
+vim.keymap.set('n', '<Leader>fc', function()
+  if vim.opt.foldcolumn:get() ~= '0' then
+    vim.opt.foldcolumn = '0'
+  else
+    vim.opt.foldcolumn = '1'
+  end
+end, { noremap = true, desc = "Toggle fold column" })
+
+vim.keymap.set('n', '<Leader>l', function()
+  vim.opt.number = not(vim.opt.number:get())
+  if vim.opt.number:get() then
+    print("line numbers enabled")
+  else
+    print("line numbers disabled")
+  end
+end, { noremap = true, desc = "Toggle line numbers" })
