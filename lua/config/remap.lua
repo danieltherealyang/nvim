@@ -66,7 +66,7 @@ vim.keymap.set('n', '<Leader>fc', function()
   end
 end, { noremap = true, desc = "Toggle fold column" })
 
-vim.keymap.set('n', '<Leader>l', function()
+vim.keymap.set('n', '<Leader>lt', function()
   vim.opt.number = not(vim.opt.number:get())
   if vim.opt.number:get() then
     print("line numbers enabled")
