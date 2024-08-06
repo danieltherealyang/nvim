@@ -74,3 +74,6 @@ vim.keymap.set('n', '<Leader>lt', function()
     print("line numbers disabled")
   end
 end, { noremap = true, desc = "Toggle line numbers" })
+
+vim.keymap.set('n', 'J', ':m +1<CR>', { noremap = true, desc = "Move line down"})
+vim.keymap.set('n', 'K', ':m -2<CR>', { noremap = true, desc = "Move line up"})
