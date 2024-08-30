@@ -36,6 +36,7 @@ require('mason-lspconfig').setup({
 })
 
 -- Autocompletion
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
 
 cmp.setup({
@@ -52,3 +53,7 @@ cmp.setup({
         ['<Tab>'] = cmp.mapping.confirm({select = true}),
     }),
 })
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
