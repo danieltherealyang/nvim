@@ -1,4 +1,3 @@
-require('remap.plugins.autopairs')
 require('remap.plugins.harpoon')
 require('remap.plugins.lsp')
 require('remap.plugins.nvim-tree')
