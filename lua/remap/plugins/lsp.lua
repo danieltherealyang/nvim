@@ -22,6 +22,25 @@ lsp_zero.extend_lspconfig({
     capabilities = require('cmp_nvim_lsp').default_capabilities(),
 })
 
+local border = {
+    { '┌', 'FloatBorder' },
+    { '─', 'FloatBorder' },
+    { '┐', 'FloatBorder' },
+    { '│', 'FloatBorder' },
+    { '┘', 'FloatBorder' },
+    { '─', 'FloatBorder' },
+    { '└', 'FloatBorder' },
+    { '│', 'FloatBorder' },
+}
+
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
+vim.diagnostic.config({
+  virtual_text = false,
+  float = {border = border}
+})
+
 -- Mason LSP installer
 require('mason').setup({})
 require('mason-lspconfig').setup({
