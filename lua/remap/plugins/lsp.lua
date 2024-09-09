@@ -48,6 +48,7 @@ require('mason-lspconfig').setup({
 -- Autocompletion
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
+local cmp_action = lsp_zero.cmp_action()
 
 cmp.setup({
     sources = {
@@ -61,6 +62,8 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         ['<Tab>'] = cmp.mapping.confirm({select = true}),
+        ['<C-f>'] = cmp_action.vim_snippet_jump_forward(),
+        ['<C-b>'] = cmp_action.vim_snippet_jump_backward(),
     }),
 })
 cmp.event:on(
