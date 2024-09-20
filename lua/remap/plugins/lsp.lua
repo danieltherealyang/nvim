@@ -4,7 +4,7 @@ local lsp_zero = require('lsp-zero')
 -- lsp_attach is where you enable features that only work
 -- if there is a language server active in the file
 local lsp_attach = function(client, bufnr)
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = "Hover symbol info", buffer = bufnr })
+    vim.keymap.set('n', 'mk', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = "Hover symbol info", buffer = bufnr })
     vim.keymap.set('n', 'md', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = "Jump to symbol definition", buffer = bufnr })
     vim.keymap.set('n', 'mD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = "Jump to symbol declaration",  buffer = bufnr })
     vim.keymap.set('n', 'mi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = "List all symbol implementations", buffer = bufnr })
