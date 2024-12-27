@@ -61,7 +61,7 @@ cmp.setup({
         end,
     },
     mapping = cmp.mapping.preset.insert({
-        ['<Tab>'] = cmp.mapping.confirm({select = true}),
+        ['<Enter>'] = cmp.mapping.confirm({select = true}),
         ['<C-f>'] = cmp_action.vim_snippet_jump_forward(),
         ['<C-b>'] = cmp_action.vim_snippet_jump_backward(),
     }),
