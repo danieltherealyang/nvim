@@ -21,9 +21,12 @@ return {
                     before = [[
                     vim.opt.background = "light"
                     ]],
-                }
+                },
             },
             livePreview = true, -- Apply theme while picking. Default to true.
         })
-    end
+    end,
+    keys = {
+        { '<Leader>tc', ':Themery<CR>', desc = 'Toggle Colorschemes' },
+    },
 }
