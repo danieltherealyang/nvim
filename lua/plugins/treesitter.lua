@@ -8,6 +8,7 @@ local opts = {
         'markdown',
         'markdown_inline',
     },
+    auto_install = true,
 }
 
 local function config()
