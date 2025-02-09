@@ -1,5 +1,5 @@
 require('toggleterm').setup{
-  start_in_insert = false
+    autoscroll = false,
 }
 
 vim.keymap.set('t', '<C-q>', '<C-\\><C-n>:ToggleTerm<CR>', { silent = true, desc = "Toggle terminal" })
