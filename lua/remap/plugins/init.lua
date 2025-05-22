@@ -1,7 +1,7 @@
 require('remap.plugins.harpoon')
 require('remap.plugins.lsp')
 require('remap.plugins.marks')
-require('remap.plugins.nvim-tree')
+require('remap.plugins.mini-files')
 require('remap.plugins.telescope')
 require('remap.plugins.toggleterm')
 require('remap.plugins.undotree')
