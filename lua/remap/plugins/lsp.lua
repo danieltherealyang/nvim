@@ -37,10 +37,16 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
-    ensure_installed = { 'lua_ls', 'rust_analyzer' },
+    ensure_installed = { 'lua_ls', 'rust_analyzer', 'clangd' },
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup({})
+        end,
+        ["clangd"] = function()
+            require('lspconfig').clangd.setup({
+                cmd = { "clangd", "--clang-tidy", "--completion-style=detailed" },
+                capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            })
         end,
     },
 })
@@ -70,3 +76,62 @@ cmp.event:on(
   'confirm_done',
   cmp_autopairs.on_confirm_done()
 )
+
+local mason_dap = require("mason-nvim-dap")
+local dap = require("dap")
+local ui = require("dapui")
+local dap_virtual_text = require("nvim-dap-virtual-text")
+
+-- Dap Virtual Text
+dap_virtual_text.setup()
+
+mason_dap.setup({
+    ensure_installed = { "cppdbg" },
+    automatic_installation = true,
+    handlers = {
+        function(config)
+            require("mason-nvim-dap").default_setup(config)
+        end,
+    },
+})
+
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "${port}",
+  executable = {
+    command = "codelldb", -- or if not in $PATH: "/absolute/path/to/codelldb"
+    args = {"--port", "${port}"},
+  }
+}
+
+dap.configurations.cpp = {
+  {
+    name = "Launch file",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+  },
+}
+
+-- Dap UI
+
+ui.setup()
+
+vim.fn.sign_define("DapBreakpoint", { text = "🐞" })
+
+dap.listeners.before.attach.dapui_config = function()
+    ui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+    ui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+    ui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+    ui.close()
+end
