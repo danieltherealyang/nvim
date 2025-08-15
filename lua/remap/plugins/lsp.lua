@@ -86,7 +86,7 @@ local dap_virtual_text = require("nvim-dap-virtual-text")
 dap_virtual_text.setup()
 
 mason_dap.setup({
-    ensure_installed = { "cppdbg" },
+    ensure_installed = { "codelldb" },
     automatic_installation = true,
     handlers = {
         function(config)
@@ -117,11 +117,47 @@ dap.configurations.cpp = {
   },
 }
 
+-- Dap Keybindings
+vim.keymap.set('n', '<Leader>db', '<cmd>DapToggleBreakpoint<cr>', { desc = "Toggle breakpoint" })
+vim.keymap.set('n', '<Leader>dn', '<cmd>DapNew<cr>', { desc = "Launch new debug session" })
+vim.keymap.set('n', '<Leader>dc', '<cmd>DapContinue<cr>', { desc = "Continue debug execution" })
+vim.keymap.set('n', '<Leader>d<Down>', '<cmd>DapStepOver<cr>', { desc = "Step over function" })
+vim.keymap.set('n', '<Leader>d<Right>', '<cmd>DapStepInto<cr>', { desc = "Step into function" })
+vim.keymap.set('n', '<Leader>d<Left>', '<cmd>DapStepOut<cr>', { desc = "Step out of function" })
+vim.keymap.set('n', '<Leader>d<Up>', '<cmd>DapRestartFrame<cr>', { desc = "Restart frame" })
+
 -- Dap UI
+ui.setup({
+    layouts = { {
+        elements = { {
+            id = "scopes",
+            size = 0.25
+        }, {
+            id = "breakpoints",
+            size = 0.25
+        }, {
+            id = "stacks",
+            size = 0.25
+        }, {
+            id = "watches",
+            size = 0.25
+        } },
+        position = "left",
+        size = 30
+    }, {
+        elements = { {
+            id = "repl",
+            size = 0.25
+        }, {
+            id = "console",
+            size = 0.25
+        } },
+        position = "bottom",
+        size = 10
+    } }
+})
 
-ui.setup()
-
-vim.fn.sign_define("DapBreakpoint", { text = "🐞" })
+vim.fn.sign_define("DapBreakpoint", { text = "🚩" })
 
 dap.listeners.before.attach.dapui_config = function()
     ui.open()
@@ -135,3 +171,7 @@ end
 dap.listeners.before.event_exited.dapui_config = function()
     ui.close()
 end
+
+-- Dap UI
+
+vim.keymap.set('n', '<Leader>dt', function () ui.toggle({ reset = true }) end, { desc = "Toggle debugger windows" })
