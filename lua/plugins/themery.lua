@@ -4,6 +4,10 @@ return {
     config = function()
         require("themery").setup({
             themes = { -- Your list of installed colorschemes.
+                {
+                    name = "default",
+                    colorscheme = "default",
+                },
                 "everforest",
                 "kanagawa-lotus",
                 "kanagawa-dragon",
