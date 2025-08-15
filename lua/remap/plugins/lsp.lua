@@ -126,6 +126,7 @@ end
 vim.keymap.set('n', '<Leader>db', '<cmd>DapToggleBreakpoint<cr>', { desc = "Toggle breakpoint" })
 vim.keymap.set('n', '<Leader>dn', '<cmd>DapNew<cr>', { desc = "Launch new debug session" })
 vim.keymap.set('n', '<Leader>dc', '<cmd>DapContinue<cr>', { desc = "Continue debug execution" })
+vim.keymap.set('n', '<Leader>d<End>', '<cmd>DapTerminate<cr>', { desc = "Terminate debug session" })
 vim.keymap.set('n', '<Leader>d<Down>', '<cmd>DapStepOver<cr>', { desc = "Step over function" })
 vim.keymap.set('n', '<Leader>d<Right>', '<cmd>DapStepInto<cr>', { desc = "Step into function" })
 vim.keymap.set('n', '<Leader>d<Left>', '<cmd>DapStepOut<cr>', { desc = "Step out of function" })
