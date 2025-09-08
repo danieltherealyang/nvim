@@ -7,6 +7,10 @@ return {
                 {
                     name = "default",
                     colorscheme = "default",
+                    after = [[
+                    vim.api.nvim_set_hl(0, "LineNr", { fg = "#FFFFFF" })
+                    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#FFFFFF" })
+                    ]]
                 },
                 "everforest",
                 "kanagawa-lotus",
