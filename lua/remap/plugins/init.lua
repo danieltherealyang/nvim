@@ -1,3 +1,4 @@
+require('remap.plugins.context')
 require('remap.plugins.harpoon')
 require('remap.plugins.lsp')
 require('remap.plugins.marks')

@@ -27,3 +27,4 @@ vim.opt.wrap = false
 vim.opt.numberwidth = 2
 -- remove margin padding next to line numbers
 -- vim.opt.signcolumn = 'no'
+vim.opt.relativenumber = true
