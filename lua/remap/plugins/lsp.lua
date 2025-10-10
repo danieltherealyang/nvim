@@ -152,7 +152,7 @@ ui.setup({
             size = 0.25
         } },
         position = "left",
-        size = 30
+        size = 0.50
     }, {
         elements = { {
             id = "repl",
